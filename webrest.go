@@ -14,6 +14,7 @@ func apphandler(r *http.Request) {
 
 func Run() {
 	var localAddress string = ":8080"
+	fmt.Print("hello world")
 
 	go func() {
 		time.Sleep(100 * time.Millisecond)
