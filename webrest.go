@@ -6,15 +6,14 @@ import (
 	"time"
 )
 
-func apphandler(r *http.Request) {
-	e := Env{r, time.Now()}
+func apphandler(w http.ResponseWriter, r *http.Request) {
+	e := Env{r, w}
 	ViewSet(e)
 	Logger(e)
 }
 
 func Run() {
 	var localAddress string = ":8080"
-	fmt.Print("hello world")
 
 	go func() {
 		time.Sleep(100 * time.Millisecond)

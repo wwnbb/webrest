@@ -1,4 +1,4 @@
-package viewsets
+package webrest
 
 import (
 	"encoding/json"
@@ -17,11 +17,10 @@ func Serialize(v interface{}) ([]byte, error) {
 
 func ViewSet(e Env) error {
 	str := ""
-	resp, err := Serialize(str)
+	_, err := Serialize(str)
 	if err != nil {
-		http.Error(e.Request.Writer, err.Error(), http.StatusInternalServerError)
+		http.Error(e.Response, err.Error(), http.StatusInternalServerError)
 		return err
 	}
-	e.Writer.Write(resp)
 	return nil
 }
